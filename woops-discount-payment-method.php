@@ -87,7 +87,7 @@ add_action('plugins_loaded', function () {
 add_action('wp_enqueue_scripts', function () {
 	if (!is_checkout()) return;
 		wp_enqueue_script(
-			'c2cp-view-script',
+			'wdpmpsh-view-script',
 			WDPMPSH_RTD_JS_URL . 'wdpmpsh_script.js',
 			['jquery'],
 			WDPMPSH_JSCCS_ASSEST_VER,
@@ -95,7 +95,7 @@ add_action('wp_enqueue_scripts', function () {
 		);
 
 		wp_enqueue_style(
-			'c2cp-view-style',
+			'wdpmpsh-view-style',
 			WDPMPSH_RTD_CSS_URL . 'wdpmpsh_style.css',
 			[],
 			WDPMPSH_JSCCS_ASSEST_VER
