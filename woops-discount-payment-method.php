@@ -107,7 +107,7 @@ add_action( 'woocommerce_review_order_before_payment', 'wdpmpsh_woocommerce_befo
 function wdpmpsh_woocommerce_before_payment_area( ) { 
 	$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 	if ( isset($available_gateways['pa_zarinpal']) ) {	
-		 echo '<h3>روش پرداخت</h3>';
+		 echo '<h3>' . __('payment method', 'woocommerce') . '</h3>';
    	}
  
 };
@@ -118,9 +118,9 @@ function wdpmpsh_gateway_pa_zarinpal_custom_fields( $description, $payment_id ){
 
 	if( 'pa_zarinpal' === $payment_id ){
 		ob_start(); // Start buffering
-			echo '<section class="wdpmpsh-pa_zarinpal-bank-fdetails">';
-			echo '<h3>تخفیف ویژه پرداخت یک جا</h3>';
-			echo '</section>';
+			echo '<section class="wdpmpsh-pa_zarinpal-bank-fdetails"><h3>';
+			echo __('Special discount for paying with this portal', 'woocommerce');
+			echo '</h3></section>';
 		$description .= ob_get_clean(); // Append buffered content
 	}
 	return $description;
@@ -149,6 +149,6 @@ function wdpmpsh_gateway_discount() {
     }
 
     if ($discount > 0) {
-        WC()->cart->add_fee('تخفیف ویژه!', -$discount);
+        WC()->cart->add_fee(__('Special discount', 'wdpmpsh-td-woocommerce'), -$discount);
     }
 }
